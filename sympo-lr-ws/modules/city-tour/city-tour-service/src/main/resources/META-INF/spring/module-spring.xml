@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean class="com.liferay.symposium.citytour.service.impl.SubtipoLocalServiceImpl" id="com.liferay.symposium.citytour.service.SubtipoLocalService" />
+	<bean class="com.liferay.symposium.citytour.service.impl.SubtipoServiceImpl" id="com.liferay.symposium.citytour.service.SubtipoService" />
+	<bean class="com.liferay.symposium.citytour.service.persistence.impl.SubtipoPersistenceImpl" id="com.liferay.symposium.citytour.service.persistence.SubtipoPersistence" parent="basePersistence" />
+	<bean class="com.liferay.symposium.citytour.service.impl.TipoLocalServiceImpl" id="com.liferay.symposium.citytour.service.TipoLocalService" />
+	<bean class="com.liferay.symposium.citytour.service.impl.TipoServiceImpl" id="com.liferay.symposium.citytour.service.TipoService" />
+	<bean class="com.liferay.symposium.citytour.service.persistence.impl.TipoPersistenceImpl" id="com.liferay.symposium.citytour.service.persistence.TipoPersistence" parent="basePersistence" />
+</beans>
