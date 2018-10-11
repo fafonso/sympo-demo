@@ -43,6 +43,16 @@ public class TipoServiceWrapper implements TipoService,
 	}
 
 	@Override
+	public com.liferay.symposium.citytour.model.Tipo getTipo(long tipoId) {
+		return _tipoService.getTipo(tipoId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.symposium.citytour.model.Tipo> getTipos() {
+		return _tipoService.getTipos();
+	}
+
+	@Override
 	public TipoService getWrappedService() {
 		return _tipoService;
 	}

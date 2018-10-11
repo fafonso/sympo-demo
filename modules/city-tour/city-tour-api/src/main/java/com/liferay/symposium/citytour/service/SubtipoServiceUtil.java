@@ -52,6 +52,20 @@ public class SubtipoServiceUtil {
 		return getService().getOSGiServiceIdentifier();
 	}
 
+	public static com.liferay.symposium.citytour.model.Subtipo getSubTipo(
+		long subTipoId) {
+		return getService().getSubTipo(subTipoId);
+	}
+
+	public static java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubTipoFromTipo(
+		long tipoId) {
+		return getService().getSubTipoFromTipo(tipoId);
+	}
+
+	public static java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubtipos() {
+		return getService().getSubtipos();
+	}
+
 	public static SubtipoService getService() {
 		return _serviceTracker.getService();
 	}

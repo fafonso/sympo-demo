@@ -43,6 +43,23 @@ public class SubtipoServiceWrapper implements SubtipoService,
 	}
 
 	@Override
+	public com.liferay.symposium.citytour.model.Subtipo getSubTipo(
+		long subTipoId) {
+		return _subtipoService.getSubTipo(subTipoId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubTipoFromTipo(
+		long tipoId) {
+		return _subtipoService.getSubTipoFromTipo(tipoId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubtipos() {
+		return _subtipoService.getSubtipos();
+	}
+
+	@Override
 	public SubtipoService getWrappedService() {
 		return _subtipoService;
 	}

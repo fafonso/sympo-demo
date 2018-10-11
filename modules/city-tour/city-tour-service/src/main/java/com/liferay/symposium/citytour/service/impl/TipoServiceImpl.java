@@ -14,7 +14,13 @@
 
 package com.liferay.symposium.citytour.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.symposium.citytour.model.Tipo;
 import com.liferay.symposium.citytour.service.base.TipoServiceBaseImpl;
+
+import java.util.List;
 
 /**
  * The implementation of the tipo remote service.
@@ -31,9 +37,24 @@ import com.liferay.symposium.citytour.service.base.TipoServiceBaseImpl;
  * @see com.liferay.symposium.citytour.service.TipoServiceUtil
  */
 public class TipoServiceImpl extends TipoServiceBaseImpl {
+	Log logger = LogFactoryUtil.getLog(TipoServiceImpl.class.getName());
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.symposium.citytour.service.TipoServiceUtil} to access the tipo remote service.
 	 */
+	
+	public List<Tipo> getTipos() {
+		return tipoLocalService.getTipos(0, tipoLocalService.getTiposCount());
+	}
+	
+	public Tipo getTipo(long tipoId) {
+		try {
+			return tipoLocalService.getTipo(tipoId);
+		} catch (PortalException e) {
+			logger.error(e);
+			return null;
+		}
+	}
+
 }

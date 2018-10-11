@@ -52,6 +52,14 @@ public class TipoServiceUtil {
 		return getService().getOSGiServiceIdentifier();
 	}
 
+	public static com.liferay.symposium.citytour.model.Tipo getTipo(long tipoId) {
+		return getService().getTipo(tipoId);
+	}
+
+	public static java.util.List<com.liferay.symposium.citytour.model.Tipo> getTipos() {
+		return getService().getTipos();
+	}
+
 	public static TipoService getService() {
 		return _serviceTracker.getService();
 	}

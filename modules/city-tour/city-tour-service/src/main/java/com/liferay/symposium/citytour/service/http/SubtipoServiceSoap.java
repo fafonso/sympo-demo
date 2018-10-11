@@ -16,9 +16,16 @@ package com.liferay.symposium.citytour.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.liferay.symposium.citytour.service.SubtipoServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link com.liferay.symposium.citytour.service.SubtipoServiceUtil} service utility. The
+ * {@link SubtipoServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,54 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see SubtipoServiceHttp
  * @see com.liferay.symposium.citytour.model.SubtipoSoap
- * @see com.liferay.symposium.citytour.service.SubtipoServiceUtil
+ * @see SubtipoServiceUtil
  * @generated
  */
 @ProviderType
 public class SubtipoServiceSoap {
+	public static com.liferay.symposium.citytour.model.SubtipoSoap[] getSubtipos()
+		throws RemoteException {
+		try {
+			java.util.List<com.liferay.symposium.citytour.model.Subtipo> returnValue =
+				SubtipoServiceUtil.getSubtipos();
+
+			return com.liferay.symposium.citytour.model.SubtipoSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.symposium.citytour.model.SubtipoSoap[] getSubTipoFromTipo(
+		long tipoId) throws RemoteException {
+		try {
+			java.util.List<com.liferay.symposium.citytour.model.Subtipo> returnValue =
+				SubtipoServiceUtil.getSubTipoFromTipo(tipoId);
+
+			return com.liferay.symposium.citytour.model.SubtipoSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.symposium.citytour.model.SubtipoSoap getSubTipo(
+		long subTipoId) throws RemoteException {
+		try {
+			com.liferay.symposium.citytour.model.Subtipo returnValue = SubtipoServiceUtil.getSubTipo(subTipoId);
+
+			return com.liferay.symposium.citytour.model.SubtipoSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(SubtipoServiceSoap.class);
 }

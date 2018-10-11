@@ -17,6 +17,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 
@@ -85,9 +86,9 @@ public class CityTourRestApplication extends Application {
 	}
 	
 	@GET
-	@Path("/subtipos/{tipoid}")
+	@Path("/subtipos/porid/")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public String getSubTipoFromTipo(@PathParam("tipoid") long tipoId) {
+	public String getSubTipoFromTipo(@QueryParam("tipoid") long tipoId) {
 		try {
 			return JSONFactoryUtil.serialize(subtipoLocalService.getSubtiposFromTipo(tipoId));
 		} catch (Exception e) {

@@ -14,7 +14,13 @@
 
 package com.liferay.symposium.citytour.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.symposium.citytour.model.Subtipo;
 import com.liferay.symposium.citytour.service.base.SubtipoServiceBaseImpl;
+
+import java.util.List;
 
 /**
  * The implementation of the subtipo remote service.
@@ -36,4 +42,28 @@ public class SubtipoServiceImpl extends SubtipoServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.symposium.citytour.service.SubtipoServiceUtil} to access the subtipo remote service.
 	 */
+	
+	Log logger = LogFactoryUtil.getLog(SubtipoServiceImpl.class.getName());
+	/*
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never reference this class directly. Always use {@link com.liferay.symposium.citytour.service.TipoServiceUtil} to access the tipo remote service.
+	 */
+	
+	public List<Subtipo> getSubtipos() {
+		return subtipoLocalService.getSubtipos(0, subtipoLocalService.getSubtiposCount());
+	}
+	
+	public List<Subtipo> getSubTipoFromTipo(long tipoId) {
+		return subtipoLocalService.getSubtiposFromTipo(tipoId);
+	}
+	
+	public Subtipo getSubTipo(long subTipoId) {
+		try {
+			return subtipoLocalService.getSubtipo(subTipoId);
+		} catch (PortalException e) {
+			logger.error(e);
+			return null;
+		}
+	}
 }

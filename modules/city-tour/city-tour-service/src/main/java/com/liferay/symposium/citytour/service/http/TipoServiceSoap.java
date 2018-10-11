@@ -16,9 +16,16 @@ package com.liferay.symposium.citytour.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.liferay.symposium.citytour.service.TipoServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link com.liferay.symposium.citytour.service.TipoServiceUtil} service utility. The
+ * {@link TipoServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,39 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see TipoServiceHttp
  * @see com.liferay.symposium.citytour.model.TipoSoap
- * @see com.liferay.symposium.citytour.service.TipoServiceUtil
+ * @see TipoServiceUtil
  * @generated
  */
 @ProviderType
 public class TipoServiceSoap {
+	public static com.liferay.symposium.citytour.model.TipoSoap[] getTipos()
+		throws RemoteException {
+		try {
+			java.util.List<com.liferay.symposium.citytour.model.Tipo> returnValue =
+				TipoServiceUtil.getTipos();
+
+			return com.liferay.symposium.citytour.model.TipoSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.symposium.citytour.model.TipoSoap getTipo(
+		long tipoId) throws RemoteException {
+		try {
+			com.liferay.symposium.citytour.model.Tipo returnValue = TipoServiceUtil.getTipo(tipoId);
+
+			return com.liferay.symposium.citytour.model.TipoSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(TipoServiceSoap.class);
 }

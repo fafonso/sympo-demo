@@ -23,7 +23,12 @@ import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.spring.osgi.OSGiBeanProperties;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+
+import com.liferay.symposium.citytour.model.Tipo;
+
+import java.util.List;
 
 /**
  * Provides the remote service interface for Tipo. Methods of this
@@ -56,4 +61,10 @@ public interface TipoService extends BaseService {
 	* @return the OSGi service identifier
 	*/
 	public String getOSGiServiceIdentifier();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Tipo getTipo(long tipoId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Tipo> getTipos();
 }
