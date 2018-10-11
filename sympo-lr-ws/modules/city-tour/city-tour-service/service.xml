@@ -76,6 +76,10 @@
 		<finder name="label" return-type="Collection">
 			<finder-column name="label" />
 		</finder>
+		
+		<finder name="tipoId" return-type="Collection">
+			<finder-column name="tipoId" />
+		</finder>		
 
 		<!-- References -->
 

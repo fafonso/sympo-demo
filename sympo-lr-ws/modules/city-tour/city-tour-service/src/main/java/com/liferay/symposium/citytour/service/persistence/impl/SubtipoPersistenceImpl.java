@@ -2009,6 +2009,506 @@ public class SubtipoPersistenceImpl extends BasePersistenceImpl<Subtipo>
 	private static final String _FINDER_COLUMN_LABEL_LABEL_1 = "subtipo.label IS NULL";
 	private static final String _FINDER_COLUMN_LABEL_LABEL_2 = "subtipo.label = ?";
 	private static final String _FINDER_COLUMN_LABEL_LABEL_3 = "(subtipo.label IS NULL OR subtipo.label = '')";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_TIPOID = new FinderPath(SubtipoModelImpl.ENTITY_CACHE_ENABLED,
+			SubtipoModelImpl.FINDER_CACHE_ENABLED, SubtipoImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findBytipoId",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID =
+		new FinderPath(SubtipoModelImpl.ENTITY_CACHE_ENABLED,
+			SubtipoModelImpl.FINDER_CACHE_ENABLED, SubtipoImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findBytipoId",
+			new String[] { Long.class.getName() },
+			SubtipoModelImpl.TIPOID_COLUMN_BITMASK |
+			SubtipoModelImpl.LABEL_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_TIPOID = new FinderPath(SubtipoModelImpl.ENTITY_CACHE_ENABLED,
+			SubtipoModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countBytipoId",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the subtipos where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @return the matching subtipos
+	 */
+	@Override
+	public List<Subtipo> findBytipoId(long tipoId) {
+		return findBytipoId(tipoId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the subtipos where tipoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param tipoId the tipo ID
+	 * @param start the lower bound of the range of subtipos
+	 * @param end the upper bound of the range of subtipos (not inclusive)
+	 * @return the range of matching subtipos
+	 */
+	@Override
+	public List<Subtipo> findBytipoId(long tipoId, int start, int end) {
+		return findBytipoId(tipoId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the subtipos where tipoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param tipoId the tipo ID
+	 * @param start the lower bound of the range of subtipos
+	 * @param end the upper bound of the range of subtipos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching subtipos
+	 */
+	@Override
+	public List<Subtipo> findBytipoId(long tipoId, int start, int end,
+		OrderByComparator<Subtipo> orderByComparator) {
+		return findBytipoId(tipoId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the subtipos where tipoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param tipoId the tipo ID
+	 * @param start the lower bound of the range of subtipos
+	 * @param end the upper bound of the range of subtipos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching subtipos
+	 */
+	@Override
+	public List<Subtipo> findBytipoId(long tipoId, int start, int end,
+		OrderByComparator<Subtipo> orderByComparator, boolean retrieveFromCache) {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID;
+			finderArgs = new Object[] { tipoId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_TIPOID;
+			finderArgs = new Object[] { tipoId, start, end, orderByComparator };
+		}
+
+		List<Subtipo> list = null;
+
+		if (retrieveFromCache) {
+			list = (List<Subtipo>)finderCache.getResult(finderPath, finderArgs,
+					this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (Subtipo subtipo : list) {
+					if ((tipoId != subtipo.getTipoId())) {
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_SUBTIPO_WHERE);
+
+			query.append(_FINDER_COLUMN_TIPOID_TIPOID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(SubtipoModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(tipoId);
+
+				if (!pagination) {
+					list = (List<Subtipo>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = Collections.unmodifiableList(list);
+				}
+				else {
+					list = (List<Subtipo>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				finderCache.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first subtipo in the ordered set where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching subtipo
+	 * @throws NoSuchSubtipoException if a matching subtipo could not be found
+	 */
+	@Override
+	public Subtipo findBytipoId_First(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator)
+		throws NoSuchSubtipoException {
+		Subtipo subtipo = fetchBytipoId_First(tipoId, orderByComparator);
+
+		if (subtipo != null) {
+			return subtipo;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("tipoId=");
+		msg.append(tipoId);
+
+		msg.append("}");
+
+		throw new NoSuchSubtipoException(msg.toString());
+	}
+
+	/**
+	 * Returns the first subtipo in the ordered set where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching subtipo, or <code>null</code> if a matching subtipo could not be found
+	 */
+	@Override
+	public Subtipo fetchBytipoId_First(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator) {
+		List<Subtipo> list = findBytipoId(tipoId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last subtipo in the ordered set where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching subtipo
+	 * @throws NoSuchSubtipoException if a matching subtipo could not be found
+	 */
+	@Override
+	public Subtipo findBytipoId_Last(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator)
+		throws NoSuchSubtipoException {
+		Subtipo subtipo = fetchBytipoId_Last(tipoId, orderByComparator);
+
+		if (subtipo != null) {
+			return subtipo;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("tipoId=");
+		msg.append(tipoId);
+
+		msg.append("}");
+
+		throw new NoSuchSubtipoException(msg.toString());
+	}
+
+	/**
+	 * Returns the last subtipo in the ordered set where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching subtipo, or <code>null</code> if a matching subtipo could not be found
+	 */
+	@Override
+	public Subtipo fetchBytipoId_Last(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator) {
+		int count = countBytipoId(tipoId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<Subtipo> list = findBytipoId(tipoId, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the subtipos before and after the current subtipo in the ordered set where tipoId = &#63;.
+	 *
+	 * @param subtipoId the primary key of the current subtipo
+	 * @param tipoId the tipo ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next subtipo
+	 * @throws NoSuchSubtipoException if a subtipo with the primary key could not be found
+	 */
+	@Override
+	public Subtipo[] findBytipoId_PrevAndNext(long subtipoId, long tipoId,
+		OrderByComparator<Subtipo> orderByComparator)
+		throws NoSuchSubtipoException {
+		Subtipo subtipo = findByPrimaryKey(subtipoId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			Subtipo[] array = new SubtipoImpl[3];
+
+			array[0] = getBytipoId_PrevAndNext(session, subtipo, tipoId,
+					orderByComparator, true);
+
+			array[1] = subtipo;
+
+			array[2] = getBytipoId_PrevAndNext(session, subtipo, tipoId,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected Subtipo getBytipoId_PrevAndNext(Session session, Subtipo subtipo,
+		long tipoId, OrderByComparator<Subtipo> orderByComparator,
+		boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(4 +
+					(orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_SUBTIPO_WHERE);
+
+		query.append(_FINDER_COLUMN_TIPOID_TIPOID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(SubtipoModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(tipoId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(subtipo);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<Subtipo> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the subtipos where tipoId = &#63; from the database.
+	 *
+	 * @param tipoId the tipo ID
+	 */
+	@Override
+	public void removeBytipoId(long tipoId) {
+		for (Subtipo subtipo : findBytipoId(tipoId, QueryUtil.ALL_POS,
+				QueryUtil.ALL_POS, null)) {
+			remove(subtipo);
+		}
+	}
+
+	/**
+	 * Returns the number of subtipos where tipoId = &#63;.
+	 *
+	 * @param tipoId the tipo ID
+	 * @return the number of matching subtipos
+	 */
+	@Override
+	public int countBytipoId(long tipoId) {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_TIPOID;
+
+		Object[] finderArgs = new Object[] { tipoId };
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_SUBTIPO_WHERE);
+
+			query.append(_FINDER_COLUMN_TIPOID_TIPOID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(tipoId);
+
+				count = (Long)q.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_TIPOID_TIPOID_2 = "subtipo.tipoId = ?";
 
 	public SubtipoPersistenceImpl() {
 		setModelClass(Subtipo.class);
@@ -2348,6 +2848,12 @@ public class SubtipoPersistenceImpl extends BasePersistenceImpl<Subtipo>
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LABEL,
 				args);
 
+			args = new Object[] { subtipoModelImpl.getTipoId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_TIPOID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID,
+				args);
+
 			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
 				FINDER_ARGS_EMPTY);
@@ -2402,6 +2908,23 @@ public class SubtipoPersistenceImpl extends BasePersistenceImpl<Subtipo>
 
 				finderCache.removeResult(FINDER_PATH_COUNT_BY_LABEL, args);
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LABEL,
+					args);
+			}
+
+			if ((subtipoModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						subtipoModelImpl.getOriginalTipoId()
+					};
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_TIPOID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID,
+					args);
+
+				args = new Object[] { subtipoModelImpl.getTipoId() };
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_TIPOID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIPOID,
 					args);
 			}
 		}

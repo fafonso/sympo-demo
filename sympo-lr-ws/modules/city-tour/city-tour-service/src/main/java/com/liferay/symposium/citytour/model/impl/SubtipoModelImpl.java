@@ -118,7 +118,8 @@ public class SubtipoModelImpl extends BaseModelImpl<Subtipo>
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
 	public static final long LABEL_COLUMN_BITMASK = 4L;
-	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long TIPOID_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -447,7 +448,19 @@ public class SubtipoModelImpl extends BaseModelImpl<Subtipo>
 
 	@Override
 	public void setTipoId(long tipoId) {
+		_columnBitmask |= TIPOID_COLUMN_BITMASK;
+
+		if (!_setOriginalTipoId) {
+			_setOriginalTipoId = true;
+
+			_originalTipoId = _tipoId;
+		}
+
 		_tipoId = tipoId;
+	}
+
+	public long getOriginalTipoId() {
+		return _originalTipoId;
 	}
 
 	@JSON
@@ -594,6 +607,10 @@ public class SubtipoModelImpl extends BaseModelImpl<Subtipo>
 		subtipoModelImpl._setOriginalCompanyId = false;
 
 		subtipoModelImpl._setModifiedDate = false;
+
+		subtipoModelImpl._originalTipoId = subtipoModelImpl._tipoId;
+
+		subtipoModelImpl._setOriginalTipoId = false;
 
 		subtipoModelImpl._originalLabel = subtipoModelImpl._label;
 
@@ -761,6 +778,8 @@ public class SubtipoModelImpl extends BaseModelImpl<Subtipo>
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
 	private long _tipoId;
+	private long _originalTipoId;
+	private boolean _setOriginalTipoId;
 	private String _label;
 	private String _originalLabel;
 	private long _columnBitmask;

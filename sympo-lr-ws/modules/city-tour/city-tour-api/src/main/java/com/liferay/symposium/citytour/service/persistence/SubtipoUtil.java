@@ -647,6 +647,160 @@ public class SubtipoUtil {
 	}
 
 	/**
+	* Returns all the subtipos where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @return the matching subtipos
+	*/
+	public static List<Subtipo> findBytipoId(long tipoId) {
+		return getPersistence().findBytipoId(tipoId);
+	}
+
+	/**
+	* Returns a range of all the subtipos where tipoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param tipoId the tipo ID
+	* @param start the lower bound of the range of subtipos
+	* @param end the upper bound of the range of subtipos (not inclusive)
+	* @return the range of matching subtipos
+	*/
+	public static List<Subtipo> findBytipoId(long tipoId, int start, int end) {
+		return getPersistence().findBytipoId(tipoId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the subtipos where tipoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param tipoId the tipo ID
+	* @param start the lower bound of the range of subtipos
+	* @param end the upper bound of the range of subtipos (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching subtipos
+	*/
+	public static List<Subtipo> findBytipoId(long tipoId, int start, int end,
+		OrderByComparator<Subtipo> orderByComparator) {
+		return getPersistence()
+				   .findBytipoId(tipoId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns an ordered range of all the subtipos where tipoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link SubtipoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param tipoId the tipo ID
+	* @param start the lower bound of the range of subtipos
+	* @param end the upper bound of the range of subtipos (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching subtipos
+	*/
+	public static List<Subtipo> findBytipoId(long tipoId, int start, int end,
+		OrderByComparator<Subtipo> orderByComparator, boolean retrieveFromCache) {
+		return getPersistence()
+				   .findBytipoId(tipoId, start, end, orderByComparator,
+			retrieveFromCache);
+	}
+
+	/**
+	* Returns the first subtipo in the ordered set where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching subtipo
+	* @throws NoSuchSubtipoException if a matching subtipo could not be found
+	*/
+	public static Subtipo findBytipoId_First(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator)
+		throws com.liferay.symposium.citytour.exception.NoSuchSubtipoException {
+		return getPersistence().findBytipoId_First(tipoId, orderByComparator);
+	}
+
+	/**
+	* Returns the first subtipo in the ordered set where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching subtipo, or <code>null</code> if a matching subtipo could not be found
+	*/
+	public static Subtipo fetchBytipoId_First(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator) {
+		return getPersistence().fetchBytipoId_First(tipoId, orderByComparator);
+	}
+
+	/**
+	* Returns the last subtipo in the ordered set where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching subtipo
+	* @throws NoSuchSubtipoException if a matching subtipo could not be found
+	*/
+	public static Subtipo findBytipoId_Last(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator)
+		throws com.liferay.symposium.citytour.exception.NoSuchSubtipoException {
+		return getPersistence().findBytipoId_Last(tipoId, orderByComparator);
+	}
+
+	/**
+	* Returns the last subtipo in the ordered set where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching subtipo, or <code>null</code> if a matching subtipo could not be found
+	*/
+	public static Subtipo fetchBytipoId_Last(long tipoId,
+		OrderByComparator<Subtipo> orderByComparator) {
+		return getPersistence().fetchBytipoId_Last(tipoId, orderByComparator);
+	}
+
+	/**
+	* Returns the subtipos before and after the current subtipo in the ordered set where tipoId = &#63;.
+	*
+	* @param subtipoId the primary key of the current subtipo
+	* @param tipoId the tipo ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next subtipo
+	* @throws NoSuchSubtipoException if a subtipo with the primary key could not be found
+	*/
+	public static Subtipo[] findBytipoId_PrevAndNext(long subtipoId,
+		long tipoId, OrderByComparator<Subtipo> orderByComparator)
+		throws com.liferay.symposium.citytour.exception.NoSuchSubtipoException {
+		return getPersistence()
+				   .findBytipoId_PrevAndNext(subtipoId, tipoId,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the subtipos where tipoId = &#63; from the database.
+	*
+	* @param tipoId the tipo ID
+	*/
+	public static void removeBytipoId(long tipoId) {
+		getPersistence().removeBytipoId(tipoId);
+	}
+
+	/**
+	* Returns the number of subtipos where tipoId = &#63;.
+	*
+	* @param tipoId the tipo ID
+	* @return the number of matching subtipos
+	*/
+	public static int countBytipoId(long tipoId) {
+		return getPersistence().countBytipoId(tipoId);
+	}
+
+	/**
 	* Caches the subtipo in the entity cache if it is enabled.
 	*
 	* @param subtipo the subtipo

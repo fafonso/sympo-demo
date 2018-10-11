@@ -303,6 +303,11 @@ public class SubtipoLocalServiceUtil {
 		return getService().getSubtiposCount();
 	}
 
+	public static java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubtiposFromTipo(
+		long tipoId) {
+		return getService().getSubtiposFromTipo(tipoId);
+	}
+
 	/**
 	* Updates the subtipo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*

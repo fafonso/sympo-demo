@@ -14,7 +14,10 @@
 
 package com.liferay.symposium.citytour.service.impl;
 
+import com.liferay.symposium.citytour.model.Subtipo;
 import com.liferay.symposium.citytour.service.base.SubtipoLocalServiceBaseImpl;
+
+import java.util.List;
 
 /**
  * The implementation of the subtipo local service.
@@ -36,4 +39,8 @@ public class SubtipoLocalServiceImpl extends SubtipoLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.symposium.citytour.service.SubtipoLocalServiceUtil} to access the subtipo local service.
 	 */
+	
+	public List<Subtipo> getSubtiposFromTipo(long tipoId) {		
+		return subtipoPersistence.findBytipoId(tipoId);		
+	}
 }

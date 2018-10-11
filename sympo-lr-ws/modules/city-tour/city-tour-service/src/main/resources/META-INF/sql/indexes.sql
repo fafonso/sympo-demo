@@ -1,4 +1,5 @@
 create index IX_FFEE29C6 on citytour_Subtipo (label[$COLUMN_LENGTH:75$]);
+create index IX_FC740641 on citytour_Subtipo (tipoId);
 create index IX_32F2D792 on citytour_Subtipo (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_30101A94 on citytour_Subtipo (uuid_[$COLUMN_LENGTH:75$], groupId);
 

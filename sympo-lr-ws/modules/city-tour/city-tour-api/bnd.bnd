@@ -1,9 +1,9 @@
 Bundle-Name: city-tour-api
 Bundle-SymbolicName: city.tour.api
 Bundle-Version: 1.0.0
-Export-Package:\
-	city.tour.exception,\
-	city.tour.model,\
-	city.tour.service,\
-	city.tour.service.persistence
+Export-Package: \
+	com.liferay.symposium.citytour.exception,\
+	com.liferay.symposium.citytour.model,\
+	com.liferay.symposium.citytour.service,\
+	com.liferay.symposium.citytour.service.persistence
 -includeresource: META-INF/service.xml=../city-tour-service/service.xml

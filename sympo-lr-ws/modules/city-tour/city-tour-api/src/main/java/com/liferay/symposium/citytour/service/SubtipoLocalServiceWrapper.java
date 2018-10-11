@@ -316,6 +316,12 @@ public class SubtipoLocalServiceWrapper implements SubtipoLocalService,
 		return _subtipoLocalService.getSubtiposCount();
 	}
 
+	@Override
+	public java.util.List<com.liferay.symposium.citytour.model.Subtipo> getSubtiposFromTipo(
+		long tipoId) {
+		return _subtipoLocalService.getSubtiposFromTipo(tipoId);
+	}
+
 	/**
 	* Updates the subtipo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
