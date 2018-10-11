@@ -1,6 +1,8 @@
 package com.liferay.symposium.citytour.application;
 
+import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.symposium.citytour.model.Subtipo;
@@ -52,8 +54,17 @@ public class CityTourRestApplication extends Application {
 		int tiposCount = tipoLocalService.getTiposCount();
 		List<Tipo> tiposList = tipoLocalService.getTipos(0, tiposCount);
 		String result = "[{}]";
+
 		if (!tiposList.isEmpty()) {
-			result = JSONFactoryUtil.serialize(tiposList);
+			JSONArray listado = JSONFactoryUtil.createJSONArray();
+			for (Tipo tipo : tiposList) {
+				JSONObject object = JSONFactoryUtil.createJSONObject();
+				object.put("label", tipo.getLabel());
+				object.put("tipoid", tipo.getTipoId());				
+				listado.put(object);
+			}
+
+			result = listado.toJSONString();
 		}
 		return result;
 
@@ -75,12 +86,20 @@ public class CityTourRestApplication extends Application {
 	@Path("/subtipos")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public String getSubTipos() {
-		String result = "[{}]";
+		String result = "";
 		int subTiposCount = subtipoLocalService.getSubtiposCount();
 		List<Subtipo> subTiposList = subtipoLocalService.getSubtipos(0, subTiposCount);
 		if (!subTiposList.isEmpty()) {
-			result = JSONFactoryUtil.serialize(subTiposList);
+			JSONArray listado = JSONFactoryUtil.createJSONArray();
+			for (Subtipo subTipo : subTiposList) {
+				JSONObject object = JSONFactoryUtil.createJSONObject();
+				object.put("label", subTipo.getLabel());
+				object.put("subtipoid", subTipo.getSubtipoId());				
+				listado.put(object);
+			}
+			result = listado.toJSONString();
 		}
+			
 		return result;
 
 	}
