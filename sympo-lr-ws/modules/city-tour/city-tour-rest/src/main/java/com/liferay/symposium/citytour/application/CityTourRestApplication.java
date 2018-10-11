@@ -50,8 +50,11 @@ public class CityTourRestApplication extends Application {
 
 		int tiposCount = tipoLocalService.getTiposCount();
 		List<Tipo> tiposList = tipoLocalService.getTipos(0, tiposCount);
-
-		return JSONFactoryUtil.serialize(tiposList);
+		String result = "[{}]";
+		if (!tiposList.isEmpty()) {
+			result = JSONFactoryUtil.serialize(tiposList);
+		}
+		return result;
 
 	}
 
@@ -71,11 +74,13 @@ public class CityTourRestApplication extends Application {
 	@Path("/subtipos")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public String getSubTipos() {
-
+		String result = "[{}]";
 		int subTiposCount = subtipoLocalService.getSubtiposCount();
 		List<Subtipo> subTiposList = subtipoLocalService.getSubtipos(0, subTiposCount);
-
-		return JSONFactoryUtil.serialize(subTiposList);
+		if (!subTiposList.isEmpty()) {
+			result = JSONFactoryUtil.serialize(subTiposList);
+		}
+		return result;
 
 	}
 	
