@@ -14,6 +14,9 @@
 
 package com.liferay.symposium.citytour.uad.uad.anonymizer;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.symposium.citytours.promociones.model.Promocion;
 import com.liferay.user.associated.data.anonymizer.UADAnonymizer;
 
 import org.osgi.service.component.annotations.Component;
@@ -23,4 +26,18 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(immediate = true, service = UADAnonymizer.class)
 public class PromocionUADAnonymizer extends BasePromocionUADAnonymizer {
+    @Override
+	public void autoAnonymize(Promocion promocion, long userId,
+		User anonymousUser) throws PortalException {
+		if (promocion.getUserId() == userId) {
+			promocion.setUserId(anonymousUser.getUserId());
+            promocion.setUserName(anonymousUser.getFullName());
+			promocion.setNombreDestinatario(anonymousUser.getFirstName());
+			promocion.setApellidosDestinatario(anonymousUser.getLastName());
+			promocion.setNifDestinatario("XXXXXXXXX");
+			promocion.setTelefonoDestinatario("XXX-XXX-XXX");            
+		}
+
+		promocionLocalService.updatePromocion(promocion);
+	}    
 }
