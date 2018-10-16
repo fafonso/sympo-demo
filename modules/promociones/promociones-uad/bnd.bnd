@@ -1,0 +1,4 @@
+Bundle-Name: Liferay Citytour UAD
+Bundle-SymbolicName: citytours.promociones.uad
+Bundle-Version: 1.0.0
+-dsannotations-options: inherit
