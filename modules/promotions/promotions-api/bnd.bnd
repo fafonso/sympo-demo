@@ -1,0 +1,9 @@
+Bundle-Name: promotions-api
+Bundle-SymbolicName: citytours.promotions.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.symposium.citytours.promotions.exception,\
+	com.liferay.symposium.citytours.promotions.model,\
+	com.liferay.symposium.citytours.promotions.service,\
+	com.liferay.symposium.citytours.promotions.service.persistence
+-includeresource: META-INF/service.xml=../promotions-service/service.xml

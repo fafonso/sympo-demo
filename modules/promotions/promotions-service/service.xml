@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_1_0.dtd">
+
+<service-builder package-path="com.liferay.symposium.citytours.promotions">
+	<namespace>Citytours</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="Promotion" remote-service="true" uuid="true" uad-application-name="Citytour" uad-package-path="com.liferay.symposium.citytour.uad">
+
+		<!-- PK fields -->
+
+		<column name="promotionId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" uad-anonymize-field-name="fullName"/>
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Promotion Data -->
+		<column name="description" type="String" uad-nonanonymizable="true"/>
+		<column name="price" type="double" uad-nonanonymizable="true"/>
+		<column name="destinationCity" type="String" uad-nonanonymizable="true"/>
+
+		<!-- Personal User Data -->
+		<column name="offereeFirstName" type="String"/>
+		<column name="offereeLastName" type="String"/>
+		<column name="offereeIdNumber" type="String" />
+		<column name="offereeTelephone" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="description" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="description" return-type="Collection">
+			<finder-column name="description" />
+		</finder>
+		
+		<finder name="promotionId" return-type="Collection">
+			<finder-column name="promotionId" />
+		</finder>		
+
+		<!-- References -->
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
+</service-builder>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.symposium.citytours.promotions.model.Promotion">
+		<field name="uuid" type="String" />
+		<field name="promotionId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="description" type="String" />
+		<field name="price" type="double" />
+		<field name="destinationCity" type="String" />
+		<field name="offereeFirstName" type="String" />
+		<field name="offereeLastName" type="String" />
+		<field name="offereeIdNumber" type="String" />
+		<field name="offereeTelephone" type="String" />
+	</model>
+</model-hints>

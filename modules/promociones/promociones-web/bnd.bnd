@@ -1,5 +1,0 @@
-Bundle-Name: promociones-web
-Bundle-SymbolicName: citytours.promociones.web
-Bundle-Version: 1.0.0
-Export-Package: com.liferay.symposium.citytours.promociones.constants
--sources: true
